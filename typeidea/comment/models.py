@@ -19,8 +19,6 @@ class Comment(models.Model):
     status = models.PositiveIntegerField(default=STATUS_NORMAL, choices=STATUS_ITEMS, verbose_name='状态')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
-
-
     # verbose_name指定在admin管理界面中显示中文；
     # verbose_name表示单数形式的显示，verbose_name_plural表示复数形式的显示；
     # 中文的单数和复数一般不作区别。

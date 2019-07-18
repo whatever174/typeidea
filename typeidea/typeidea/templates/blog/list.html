@@ -5,6 +5,12 @@
     <title>List</title>
 </head>
 <body>
+<div>
+    顶部分类：
+    {% for cate in navs %}
+        <a href="/category/{{ cate.id }}/">{{ cate.name }}</a>
+    {% endfor %}
+</div>
 {% if tag %}
     标签页：{{ tag.name }}
 {% endif %}
@@ -15,12 +21,24 @@
     {% for post in post_list %}
         <a href="/post/{{ post.id }}.html">{{ post.title }}</a>
         <div>
-        <span>作者：{{ post.owner.username }}</span>
-        <span>分类：{{ post.category.name }}</span>
+            <span>作者：{{ post.owner.username }}</span>
+            <span>分类：{{ post.category.name }}</span>
         </div>
         <p>{{ post.desc }}</p>
     {% endfor %}
 </ul>
-
+<div>
+    底部分类：
+    {% for cate in categories %}
+        <a href="/category/{{ cate.id }}/">{{ cate.name }}</a>
+    {% endfor %}
+</div>
 </body>
+<div>
+    侧栏显示：
+    {% for sidebar in sidebars %}
+        <h4>{{ sidebar.title }}</h4>
+        {{ sidebar.content_html }}
+    {% endfor %}
+</div>
 </html>
