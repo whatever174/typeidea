@@ -3,6 +3,8 @@ from .models import Post,Category,Tag
 from .adminforms import PostAdminForm
 from typeidea.custom_site import custom_site
 from typeidea.base_admin import BaseOwnerAdmin
+from django.contrib.admin.models import LogEntry,CHANGE
+from django.contrib.admin.options import get_content_type_for_model
 # from django.contrib.auth import get_permission_codename
 
 from django.urls import reverse
@@ -35,7 +37,7 @@ class CategoryAdmin(BaseOwnerAdmin):
 
 
 @admin.register(Tag,site=custom_site)
-class TagAdmin(admin.ModelAdmin):
+class TagAdmin(BaseOwnerAdmin):
     list_display = ('name','status','created_time')
     fields = ('name','status')
 
@@ -117,3 +119,6 @@ class PostAdmin(BaseOwnerAdmin):
     #     else:
     #         return False
 
+@admin.register(LogEntry,site=custom_site)
+class LogEntryAdmin(admin.ModelAdmin):
+    list_display = ['object_repr','object_id','action_flag','user','change_message']
