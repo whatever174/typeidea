@@ -8,7 +8,8 @@
 <ul>
     {% for post in poats %}
         <li>
-            <a href="/post/{{ post.id }}">{{ post.title }}</a>
+{#            <a href="/post/{{ post.id }}">{{ post.title }}</a>#}
+            <a href="{% url 'post-detail' post.id %}">{{ post.title }}</a>
         </li>
     {% endfor %}
 </ul>

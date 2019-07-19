@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post, Tag, Category
 from config.models import SideBar
-
+from django.shortcuts import reverse
 
 # Create your views here.
 def post_list(request, category_id=None, tag_id=None):
